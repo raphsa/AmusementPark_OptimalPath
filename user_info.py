@@ -35,23 +35,25 @@ def get_information():
     if usr_age <= 12:
         while True:
             usr_parent = input("Is there an adult available to do the attraction with you? Some attractions requires a partner for people younger than 12.\n Reply with \"yes\" or \"no\"\n").strip().lower().replace(" ","")
+            usr_parent = usr_parent.translate(punctuation_remove)
             if usr_parent in ["yes","no"]:
                 break
             else:
                 print("Please digit \"yes\" or \"no\".")
     else:
         usr_parent = "yes"
-    print("Good, now I'll ask you height.")
+    print("Good, now I'll ask you your height.")
     while True:
         usr_height = input("How tall are you? Write it in centimeter, for example 190 if you are 1.90m.\n(Still refer to the youngest person if you are in a group)\n").strip().replace(" ","")
         try:
-            int(usr_age)
+            int(usr_height)
             break
         except:
             print("Height has not been written in the correct format, please it digit again.")
     print("Perfect, the last two questions about the activities you prefer doing.")
     while True:
         usr_water = input("Do you want to do an attraction with the chance of getting wet or not? Reply \"yes\" or \"no\"\n").strip().lower().replace(" ","")
+        usr_water = usr_water.translate(punctuation_remove)
         if usr_water in ["yes","no"]:
             break
         else:
