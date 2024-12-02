@@ -7,10 +7,12 @@ attractions_dist = pd.read_csv("AttractionsDist.csv", sep = ";")
 attractions_spec = attractions_spec.replace("T":True, "F": False)
 
 response_dict = get_information()
-
+def attractions_open(attractions_spec):
+    return attractions_spec[attractions_spec["IsOpen"] == True]
 
 def information_parser(response_dict):
-    spec_df = attractions_spec[(attractions_spec["MinAge"] <= response_dict["Age"]) | (attractions_spec["MinAge"].isna())]
+    spec_df = attractions_open(attractions_spec)
+    spec_df = spec_df[(spec_df["MinAge"] <= response_dict["Age"]) | (spec_df["MinAge"].isna())]
     spec_df = spec_df[(spec_df["MinHeight"] <= response_dict["Height"]) | (spec_df["MinHeight"].isna())]
     spec_df = spec_df[(spec_df["MaxAge"] > response_dict["Age"]) | (spec_df["MaxAge"].isna())]
     spec_df = spec_df[(spec_df["MaxHeight"] > response_dict["Height"]) | (spec_df["MaxHeight"].isna())]
