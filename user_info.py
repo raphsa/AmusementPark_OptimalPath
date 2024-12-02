@@ -1,10 +1,7 @@
 import pandas as pd
 import string
 
-attractions_spec = pd.read_csv("AttractionsSpec.csv", sep = ";")
-attractions_dist = pd.read_csv("AttractionsDist.csv", sep = ";")
 attraction_names = [x.strip().lower() for x in attractions_spec["Attraction"]]
-
 
 punctuation_remove = str.maketrans("", "", string.punctuation)
 
@@ -69,5 +66,12 @@ def get_information():
         else:
             print("The type of attraction has not been written well, please write one of the options quoted.\n ")
     print("Thank you for the information, I will output the attractions I suggest you in a moment!")
-    usr_info = [usr_position,usr_flashpass,usr_age,usr_parent,usr_height,usr_water,usr_attraction]
+    usr_info = {"Position":usr_position,
+                "Flashpass":usr_flashpass,
+                "Age":usr_age,
+                "Parent":usr_parent,
+                "Height":usr_height,
+                "Water":usr_water,
+                "Attraction":usr_attraction
+                }
     return usr_info
