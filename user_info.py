@@ -37,6 +37,8 @@ def get_information():
                 break
             else:
                 print("Please digit \"yes\" or \"no\".")
+    else:
+        usr_parent = "yes"
     print("Good, now I'll ask you height.")
     while True:
         usr_height = input("How tall are you? Write it in centimeter, for example 190 if you are 1.90m.\n(Still refer to the youngest person if you are in a group)").strip().replace(" ","")
@@ -60,4 +62,6 @@ def get_information():
             break
         else:
             print("The type of attraction has not been written well, please write one of the options quoted")
-    
+    print("Thank you for the information, I will output the attractions I suggest you in a moment!")
+    usr_info = list(usr_position,usr_flashpass,usr_age,usr_parent,usr_height,usr_water,usr_attraction)
+    return usr_info
