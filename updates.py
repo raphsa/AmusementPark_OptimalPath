@@ -6,7 +6,7 @@ def close_attractions(attractions_spec):
     if att_news == "yes":
         att_closed = input("Digit separating by comma the attraction/s that has closed\n").strip().lower().replace(" ","")
         att_closed = att_closed.split(",")
-    attractions_spec.loc[attractions_spec["Attraction"].isin(att_closed), "IsItOpen"] = False
+    attractions_spec.loc[attractions_spec["Attraction"].str.lower().isin(att_closed), "IsItOpen"] = False
     return attractions_spec
 
 def open_attractions(attractions_spec):
@@ -14,7 +14,7 @@ def open_attractions(attractions_spec):
     if att_news == "yes":
         att_opened = input("Digit separating by comma the attraction/s that has opened\n").strip().lower().replace(" ","")
         att_opened = att_opened.split(",")
-    attractions_spec.loc[attractions_spec["Attraction"].isin(att_opened), "IsItOpen"] = True
+    attractions_spec.loc[attractions_spec["Attraction"].str.lower().isin(att_opened), "IsItOpen"] = True
     return attractions_spec
 
 
