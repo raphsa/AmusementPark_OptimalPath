@@ -1,15 +1,17 @@
 import pandas as pd
 import string
 
-attraction_names = [x.strip().lower() for x in attractions_spec["Attraction"]]
+def attraction_names(attractions_spec):
+    return [x.strip().lower() for x in attractions_spec["Attraction"]]
 
 punctuation_remove = str.maketrans("", "", string.punctuation)
 
-def get_information():
+def get_information(attractions_spec):
     print("Hi, nice to see you! I will ask you five simple questions to suggest you the best choice you can do. It will last less than a minute!") 
     while True:
         usr_position = input("Which is the nearest attraction you can see?\n").strip().lower().replace(" ","")
-        if usr_position in attraction_names:
+        names = attraction_names(attractions_spec)
+        if usr_position in names:
             break
         else:
             print("Attraction name not found, please digit it again.\n ")
